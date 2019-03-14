@@ -6,12 +6,21 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>      
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+  
+       
+  
+
   <!-- Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="jquery-3.3.1.min.js"></script>
 
   <title>Musical</title>
 </head>
@@ -103,20 +112,31 @@
     <div class="col s2"></div>
   </div>
 
+
+<!-- Modal Structure -->
+<body> 
+  
   <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="https://www.youtube.com/watch?v=uI4KYzG0yss" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+    <a class="waves-effect waves-light btn darken-1 modal-trigger" href="#demo-modal">Launch Modal</a>
+<!-- Modal Structure -->
+<div id="demo-modal" class="modal">
+  <div class="modal-content">
+    <h4>A Demo of Simple Modal</h4>
+    <p>Content of the modal goes here. Place marketing text or other information here.</p>
   </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-red btn red lighten-1">Close</a>
+  </div>
+</div>
+</div>
 
+
+
+<script>
+  $(document).ready(function(){
+      $('.modal').modal();
+    })
+  </script>
   <!-- Add Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
   <script>
