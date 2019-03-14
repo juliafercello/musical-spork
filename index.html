@@ -1,16 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Musical</title>
+  <meta charset="UTF-8">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title>Musical</title>
 </head>
+
 <body>
-    
-    <!-- Add Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
+
+  <div class="row">
+    <div class="col s3"></div>
+    <div class="col s6">
+      <div class="card">
+        <div class="row">
+          <div class="col s3"></div>
+          <div class="col s6">
+            <div class="card-image">
+              <img src="assets/images/logo.jpg" class="center-align" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+          <div class="col s3"></div>
+        </div>
+        <div class="card-content">
+          <p>
+            <h3 class="center-align">Where music meets spork!!!</h3>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col s3"></div>
+  </div>
+
+  <!-- Song Lyric Input Text Box -->
+  <div class="row">
+    <div class="col s3"></div>
+    <form class="col s6">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="songLyric" class="materialize-textarea"></textarea>
+          <label for="songLyric">Please provide song lyrics</label>
+        </div>
+      </div>
+    </form>
+    <div class="col s3"></div>
+  </div>
+
+  <!-- Search button that calls Musixmatch API -->
+  <div class="row">
+    <div class="col s3"></div>
+    <div class="col s6">
+      <button id="getLyricResults" class="btn waves-effect waves-light" type="submit" name="action">Get Lyric Results
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Display results to the user -->
+  <div class="row">
+    <div class="col s2"></div>
+    <div class="col s8">
+      <table id="tableMusicResults" class="highlight centered responsive-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Item Name</th>
+            <th>Item Price</th>
+            <th>Item Quantity</th>
+          </tr>
+        </thead>
+        <tbody id="bodyMusicResults">
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+            <td>50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col s2"></div>
+  </div>
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="https://www.youtube.com/watch?v=uI4KYzG0yss" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+  <!-- Add Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
       apiKey: "AIzaSyCjexeT-tM-VflHnLImCyMEZhgw-O16OMY",
       authDomain: "musicalspork-bfe10.firebaseapp.com",
       databaseURL: "https://musicalspork-bfe10.firebaseio.com",
@@ -18,7 +129,8 @@
       storageBucket: "",
       messagingSenderId: "1029385151250"
     };
-  firebase.initializeApp(config);
-</script>
+    firebase.initializeApp(config);
+  </script>
 </body>
+
 </html>
