@@ -7,7 +7,7 @@
 //   4.) Output to User Obj
 
 // GLOBAL VARS OBJ
-glblVars = {
+var glblVars = {
     lyricsInp: "",
     songsInp: "",
     ytRes: "",
@@ -15,7 +15,7 @@ glblVars = {
 }
 
 // USER INPUT OBJ
-userInp = {
+var userInp = {
 
     //HANDLE LYRICS INPUT
     storeLyricsInput: function() {
@@ -36,7 +36,7 @@ userInp = {
 }
 
 // APIS OBJ
-api = {
+var api = {
 
 //    YOUTUBE OBJECT
     yt: {
@@ -50,6 +50,6 @@ api = {
 }
 
 //OUTPUT TO USER
-output = {
+var output = {
 
 }
