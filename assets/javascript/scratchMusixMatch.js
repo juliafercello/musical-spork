@@ -1,3 +1,14 @@
+// Initialize Firebase
+// var config = {
+//     apiKey: "AIzaSyCjexeT-tM-VflHnLImCyMEZhgw-O16OMY",
+//     authDomain: "musicalspork-bfe10.firebaseapp.com",
+//     databaseURL: "https://musicalspork-bfe10.firebaseio.com",
+//     projectId: "musicalspork-bfe10",
+//     storageBucket: "",
+//     messagingSenderId: "1029385151250"
+// };
+// firebase.initializeApp(config);
+
 var glblVars = {
     searchLyric: "",
     //searchArtist: "",
@@ -17,92 +28,93 @@ var glblVars = {
         snippet: "you're my covergirl...."
     }
     ]
+   // database: firebase.database()
 }
 
-// var mm = {
-//     getTracks: function () {
-//        var trackQueryURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
-//        //var trackQueryURL = " http://cors-proxy.htmldriven.com/?url=https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
+var mm = {
+    getTracks: function () {
+        var trackQueryURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
+        //var trackQueryURL = " http://cors-proxy.htmldriven.com/?url=https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
 
 
-//         console.log("search: " + glblVars.searchLyric);
-//         $.ajax({
-//             url: trackQueryURL,
-//             method: 'GET',
-//             dataType: 'json'
-//         })
-//             //  success: function(response){
-//             .then(function (response) {
-//                 console.log(response);
-//                 console.log(response.message.body.track_list[0].track.track_id)
-//                 glblVars.trackListResult.length = 0; //clear out the array from the last search??
-//                 var searchResult = response.message.body.track_list
-//                 for (var i = 0; i < searchResult.length; i++) {
-//                     //get snippet for each track
-//                     //  var snippet = mm.getTrackSnippet(searchResult[i].track.track_id)
-//                     //  console.log("snippet: " + snippet)
-//                     //create trackInfo object and push to array
-//                     var trackInfo = {
-//                         track_id: searchResult[i].track.track_id,
-//                         track_name: searchResult[i].track.track_name,
-//                         artist: searchResult[i].track.artist_name,
-//                         album: searchResult[i].track.album_name,
-//                         //snippet: snippet
-//                         snippet: ""
-//                     }
-//                     glblVars.trackListResult.push(trackInfo);
-//                 }
-//                 console.log(glblVars.trackListResult);
-//                 mm.getTrackSnippet();
-//             });
-//     },
+        console.log("search: " + glblVars.searchLyric);
+        $.ajax({
+            url: trackQueryURL,
+            method: 'GET',
+            dataType: 'json'
+        })
+            //  success: function(response){
+            .then(function (response) {
+                console.log(response);
+                console.log(response.message.body.track_list[0].track.track_id)
+                glblVars.trackListResult.length = 0; //clear out the array from the last search??
+                var searchResult = response.message.body.track_list
+                for (var i = 0; i < searchResult.length; i++) {
+                    //get snippet for each track
+                    //  var snippet = mm.getTrackSnippet(searchResult[i].track.track_id)
+                    //  console.log("snippet: " + snippet)
+                    //create trackInfo object and push to array
+                    var trackInfo = {
+                        track_id: searchResult[i].track.track_id,
+                        track_name: searchResult[i].track.track_name,
+                        artist: searchResult[i].track.artist_name,
+                        album: searchResult[i].track.album_name,
+                        //snippet: snippet
+                        snippet: ""
+                    }
+                    glblVars.trackListResult.push(trackInfo);
+                }
+                console.log(glblVars.trackListResult);
+                mm.getTrackSnippet();
+            });
+    },
 
-//     // getTrackSnippet: function (trackId) {
-//     getTrackSnippet: function () {
+    // getTrackSnippet: function (trackId) {
+    getTrackSnippet: function () {
 
-//         for (var i = 0; i < glblVars.trackListResult.length; i++) {
+        for (var i = 0; i < glblVars.trackListResult.length; i++) {
 
-//             glblVars.trackId = glblVars.trackListResult[i].track_id; 
-//             console.log("track id: " + glblVars.trackId)
-//             var snippetQueryURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=" + glblVars.trackId + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874"
+            glblVars.trackId = glblVars.trackListResult[i].track_id;
+            console.log("track id: " + glblVars.trackId)
+            var snippetQueryURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=" + glblVars.trackId + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874"
 
-//             $.ajax({
-//                 url: snippetQueryURL,
-//                 method: 'GET',
-//                 dataType: 'json'
-//             })
-//                .then(function(response) {
-//                     console.log(response.message.body.snippet.snippet_body);
-//                     var snippet = response.message.body.snippet.snippet_body;
-//                     console.log("snip" + snippet)
-//                     console.log(glblVars.trackListResult[i].snippet)
+            $.ajax({
+                url: snippetQueryURL,
+                method: 'GET',
+                dataType: 'json'
+            })
+                .then(function (response) {
+                    console.log(response.message.body.snippet.snippet_body);
+                    var snippet = response.message.body.snippet.snippet_body;
+                    console.log("snip" + snippet)
+                    console.log(glblVars.trackListResult[i].snippet)
 
-//                     glblVars.trackListResult[i].snippet = snippet;
+                    glblVars.trackListResult[i].snippet = snippet;
 
-//                     //console.log("each snip" + glblVars.trackListResult[i].snippet);
-//                 })
-//         }
-//         console.log(glblVars.trackListResult)
-//     }
-// }
+                    //console.log("each snip" + glblVars.trackListResult[i].snippet);
+                })
+        }
+        console.log(glblVars.trackListResult)
+    }
+}
 
 output = {
     showTracks: function () {
         for (var i = 0; i < glblVars.trackListResult.length; i++) {
             var newRow = $("<tr>");
-    
+
             var songTitleCol = $("<td>");
             songTitleCol.text(glblVars.trackListResult[i].track_name);
-    
+
             var artistCol = $("<td>");
             artistCol.text(glblVars.trackListResult[i].artist);
-    
+
             var albumCol = $("<td>");
             albumCol.text(glblVars.trackListResult[i].album);
-    
+
             var snippetCol = $("<td>");
             snippetCol.text(glblVars.trackListResult[i].snippet);
-    
+
             var youTubeCol = $("<td>");
             var songButton = $("<a>");
             songButton.addClass("waves-effect waves-light btn darken-1 modal-trigger youTubeBtn");
@@ -110,11 +122,11 @@ output = {
             songButton.attr("data-songTitle", glblVars.trackListResult[i].track_name);
             songButton.attr("data-artist", glblVars.trackListResult[i].artist);
             songButton.html("YouTube" + "<i class='material-icons right'>music_video</i>");
-            
+
             youTubeCol.text("");
-    
+
             youTubeCol.append(songButton);
-    
+
             newRow.append(songTitleCol);
             newRow.append(artistCol);
             newRow.append(albumCol);
@@ -122,13 +134,18 @@ output = {
             newRow.append(youTubeCol);
             $("#bodyMusicResults").append(newRow);
         }
+        $("#tableMusicResults").attr("style", "display: block")
     }
 }
 
-//$(document).on("click", "#getLyricResults", mm.getTracks);
+$(document).ready(function () {
+    $('.modal').modal();
+});
 
 $("#getLyricResults").on("click", function () {
     glblVars.searchLyric = $("#songLyric").val().trim();
-    // mm.getTracks();
-    output.showTracks();     
-    })
+    mm.getTracks();
+    output.showTracks();
+})
+
+
