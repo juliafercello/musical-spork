@@ -43,8 +43,13 @@ function search() {
 //WHat we need is response.items[0].kind.videoId
 
 yt = {
-    var q = ""
-    var videoId = ""
+    var q = "",
+    var ytUrl = "",
+
+    // Sample js code for search.list
+
+    // See full sample for buildApiRequest() code, which is not
+    // specific to a particular API or API method.
 
     $(".youTubeBtn").on("click", function () {
         //Reset q
@@ -54,16 +59,11 @@ yt = {
         //Set q to the conjoined title and artist of song
         q = this.parent().attr("data-songTitle") + "+" + this.parent().attr("data-artist")
         console.log("q #2: " + q)
-    },
-
-    //After the API loads, call a function to enable to search box
-    handleAPILoaded: function () {
-        $(".").attr('disabled', false);
-    },
+    }).then(search()),
 
     // Search for a specified string.
     search: function () {
-        var q = $('#query').val();
+        var q = q;
         var request = gapi.client.youtube.search.list({
             q: q,
             key: "AIzaSyAMwh-UbR8X4wAZe65g_-4uI5AQ3rE1i1M",
@@ -75,11 +75,11 @@ yt = {
         });
 
         request.execute(function (response) {
-            var str = JSON.stringify(response.result);
+            ytUrl = ;
             $('#search-container').html('<pre>' + str + '</pre>');
         });
 
-        ytRes = response.
+        ytRes = response.items[0].kind.videoId
     }
 
 }
