@@ -33,7 +33,7 @@ var glblVars = {
 
 var mm = {
     getTracks: function () {
-        var trackQueryURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
+        var trackQueryURL = "https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
         //var trackQueryURL = " http://cors-proxy.htmldriven.com/?url=https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
 
 
@@ -76,7 +76,7 @@ var mm = {
 
             glblVars.trackId = glblVars.trackListResult[i].track_id;
             console.log("track id: " + glblVars.trackId)
-            var snippetQueryURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=" + glblVars.trackId + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874"
+            var snippetQueryURL = "https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=" + glblVars.trackId + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874"
 
             $.ajax({
                 url: snippetQueryURL,
