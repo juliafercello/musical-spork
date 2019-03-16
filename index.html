@@ -22,14 +22,13 @@
 <body>
 
   <div class="row">
-    <div class="col s3"></div>
     <div class="col s6">
       <div class="card">
         <div class="row">
           <div class="col s3"></div>
           <div class="col s6">
             <div class="card-image">
-              <img src="assets/images/logo.jpg" class="center-align" style="width: 100%; height: 100%;">
+              <img src="assets/images/logo.jpg" class="center-align" style="width: 75%; height: 75%;">
             </div>
           </div>
           <div class="col s3"></div>
@@ -41,52 +40,51 @@
         </div>
       </div>
     </div>
-    <div class="col s3"></div>
-  </div>
-
-  <!-- Song Lyric Input Text Box -->
-  <div class="row">
-    <div class="col s3"></div>
     <form class="col s6">
-      <div class="row">
+      <div class="card">
         <div class="input-field col s12">
           <textarea id="songLyric" class="materialize-textarea"></textarea>
           <label for="songLyric">Please provide song lyrics</label>
         </div>
+        <div class="card-content">
+          <button id="getLyricResults" class="btn waves-effect waves-light" type="submit" name="action">Get Lyric
+            Results
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
       </div>
     </form>
-    <div class="col s3"></div>
-  </div>
-
-  <!-- Search button that calls Musixmatch API -->
-  <div class="row">
-    <div class="col s3"></div>
-    <div class="col s6">
-      <button id="getLyricResults" class="btn waves-effect waves-light" type="submit" name="action">Get Lyric Results
-        <i class="material-icons right">send</i>
-      </button>
-    </div>
   </div>
 
   <!-- Display results to the user -->
   <div class="row">
-    <div class="col s2"></div>
     <div class="col s8">
-      <table id="tableMusicResults" class="highlight centered responsive-table" style="display: none">
+      <div style="display: none">
+        <table id="tableMusicResults" class="highlight centered responsive-table">
+          <thead>
+            <tr>
+              <th>Song Title</th>
+              <th>Artist</th>
+              <th>Album</th>
+              <th>YouTube</th>
+            </tr>
+          </thead>
+          <tbody id="bodyMusicResults">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col s4">
+      <table id="recentMusicSearches" class="highlight centered responsive-table">
         <thead>
           <tr>
-            <th>Artist</th>
-            <th>Album</th>
-            <th>Song Title</th>
-            <th>Lyrics</th>
-            <th>YouTube</th>
+            <th>Query</th>
           </tr>
         </thead>
-        <tbody id="bodyMusicResults">
+        <tbody id="recentSearchesDiv">
         </tbody>
       </table>
     </div>
-    <div class="col s2"></div>
   </div>
 
   <!-- Modal Structure -->
@@ -101,10 +99,10 @@
   <!-- js files -->
   <script src="assets/javascript/scratchMusixMatch.js"></script>
   <script src="assets/javascript/scratchYouTube.js"></script>
-  <!--<script src="assets/javascript/script.js"></script>-->
+  <script src="assets/javascript/script.js"></script>
 
-    <!-- Add Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <!-- Add Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 </body>
 
 </html>
