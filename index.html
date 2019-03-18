@@ -23,7 +23,7 @@
 
   <div class="row">
     <div class="col s6">
-      <div class="card">
+      <div class="card hoverable">
         <div class="row">
           <div class="col s3"></div>
           <div class="col s6">
@@ -35,15 +35,15 @@
         </div>
         <div class="card-content">
           <p>
-            <h3 class="center-align">Where music meets spork!!!</h3>
+            <h2 class="center-align">Where music meets spork!!!</h2>
           </p>
         </div>
       </div>
     </div>
     <form class="col s6">
-      <div class="card">
+      <div class="card hoverable">
         <div class="input-field col s12">
-          <textarea id="songLyric" class="materialize-textarea"></textarea>
+          <input id="songLyric" type="text"></input>
           <label for="songLyric">Please provide song lyrics</label>
         </div>
         <div class="card-content">
@@ -59,8 +59,8 @@
   <!-- Display results to the user -->
   <div class="row">
     <div class="col s8">
-      <div>
-        <table id="tableMusicResults" class="highlight centered responsive-table" style="display: none">
+      <div id="tableMusicResults" class="card hoverable" style="display: none">
+        <table class="highlight responsive-table">
           <thead>
             <tr>
               <th>Song Title</th>
@@ -74,16 +74,12 @@
         </table>
       </div>
     </div>
+    <!-- Show recent searches from users -->
     <div class="col s4">
-      <table id="recentMusicSearches" class="highlight centered responsive-table">
-        <thead>
-          <tr>
-            <th>Query</th>
-          </tr>
-        </thead>
-        <tbody id="recentSearchesDiv">
-        </tbody>
-      </table>
+      <div class="card hoverable">
+        <h3 class="center-align">Recent Searches</h3>
+        <div id="recentSearchesDiv"></div>
+      </div>
     </div>
   </div>
 
@@ -96,8 +92,8 @@
     <a href="#!" class="modal-action modal-close waves-effect waves-red btn red lighten-1">Close</a>
   </div>
 
-   <!-- Add Firebase -->
-   <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <!-- Add Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 
   <!-- js files -->
   <script src="assets/javascript/scratchMusixMatch.js"></script>

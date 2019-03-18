@@ -38,7 +38,7 @@ var mm = {
         var trackQueryURL = "https://chriscastle.com/proxy/?:proxy:https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
 
         console.log("search: " + glblVars.searchLyric);
-        
+
         $.ajax({
             url: trackQueryURL,
             method: 'GET',
@@ -65,34 +65,34 @@ var mm = {
                 }
                 console.log(glblVars.trackListResult);
                 //mm.getTrackSnippet();
-                output.showTracks(); 
+                output.showTracks();
             });
     }
     //,
 
-//     getTrackSnippet: function () {
-//         for (var i = 0; i < glblVars.trackListResult.length; i++) {
-//         glblVars.trackId = glblVars.trackListResult.track_id;
-//         //  console.log("track id: " + glblVars.trackId)
-//         var snippetQueryURL = "https://chriscastle.com/proxy/?:proxy:https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=" + glblVars.trackId + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874"
+    //     getTrackSnippet: function () {
+    //         for (var i = 0; i < glblVars.trackListResult.length; i++) {
+    //         glblVars.trackId = glblVars.trackListResult.track_id;
+    //         //  console.log("track id: " + glblVars.trackId)
+    //         var snippetQueryURL = "https://chriscastle.com/proxy/?:proxy:https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=" + glblVars.trackId + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874"
 
-//         $.ajax({
-//             url: snippetQueryURL,
-//             method: 'GET',
-//             dataType: 'json'
-//         })
-//             .then(function (response) {
-//                 console.log(response.message.body.snippet.snippet_body);
-//                 var snippet = response.message.body.snippet.snippet_body;
-//                 glblVars.trackListResult[i].snippet = snippet;     
+    //         $.ajax({
+    //             url: snippetQueryURL,
+    //             method: 'GET',
+    //             dataType: 'json'
+    //         })
+    //             .then(function (response) {
+    //                 console.log(response.message.body.snippet.snippet_body);
+    //                 var snippet = response.message.body.snippet.snippet_body;
+    //                 glblVars.trackListResult[i].snippet = snippet;     
 
-//                 //console.log("snip" + snippet)
-//                 //console.log("i: " + i)
-//                 //console.log(glblVars.trackListResult[i].snippet)
-//             }); 
-//         }
-//         console.log(glblVars.trackListResult);
-//     }
+    //                 //console.log("snip" + snippet)
+    //                 //console.log("i: " + i)
+    //                 //console.log(glblVars.trackListResult[i].snippet)
+    //             }); 
+    //         }
+    //         console.log(glblVars.trackListResult);
+    //     }
 }
 
 //methods to show the search results on the page
@@ -157,14 +157,15 @@ $(document).ready(function () {
 $("#getLyricResults").on("click", function (event) {
     event.preventDefault();
 
-    glblVars.searchLyric = $("#songLyric").val().trim();
-    console.log(glblVars.searchLyric);
-    mm.getTracks();
-    //output.showTracks();
-    fbase.storeSearch();
-
-    $("#songLyric").val("");
-
+    // Validate the user input lyrics
+    if (!($("#songLyric").val()=="")) {
+        glblVars.searchLyric = $("#songLyric").val().trim();
+        console.log(glblVars.searchLyric);
+        mm.getTracks();
+        //output.showTracks();
+        fbase.storeSearch();
+        $("#songLyric").val("");
+    }
 });
 
 //Listen for chats and add to the page 
