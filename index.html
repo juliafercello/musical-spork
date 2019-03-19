@@ -10,12 +10,6 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
   <title>Musical</title>
 </head>
 
@@ -41,16 +35,13 @@
       </div>
     </div>
     <form class="col s6">
-      <div class="card hoverable">
+      <div class="row">
         <div class="input-field col s12">
-          <input id="songLyric" type="text"></input>
-          <label for="songLyric">Please provide song lyrics</label>
+          <input id="songLyric" name="songLyric" type="text" class="validate" required="required" aria-required="true">
+          <label for="songLyric" data-error="wrong" data-success="right">Please provide song lyrics</label>
         </div>
-        <div class="card-content">
-          <button id="getLyricResults" class="btn waves-effect waves-light" type="submit" name="action">Get Lyric
-            Results
-            <i class="material-icons right">send</i>
-          </button>
+        <div class="input-field col s12">
+          <input type="submit" name="action" value="Get Lyric Results" id="getLyricResults" class="btn waves-effect waves-light" />
         </div>
       </div>
     </form>
@@ -95,10 +86,14 @@
   <!-- Add Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 
-  <!-- js files -->
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- External Script File -->
   <script src="assets/javascript/scratchMusixMatch.js"></script>
-  <script src="assets/javascript/scratchYouTube.js"></script>
-  <!-- <script src="assets/javascript/script.js"></script> -->
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>
 
