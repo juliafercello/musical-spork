@@ -21,7 +21,7 @@ var glblVars = {
 //musixMatch method to retrieve songs by lyrics
 var mm = {
     getTracks: function () {
-        var trackQueryURL = "https://chriscastle.com/proxy/?:proxy:https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=10&page=1"
+        var trackQueryURL = "https://chriscastle.com/proxy/?:proxy:https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=" + glblVars.searchLyric + "&apikey=28e8336b7ccf4b5261bf290e9cfc6874&s_track_rating=desc&page_size=15&page=1"
 
         $.ajax({
             url: trackQueryURL,
@@ -142,9 +142,10 @@ $(document).on("click", ".youTubeBtn", yt.getVideo);
 
 // Listen for chats and add to the page 
 glblVars.database.ref("/searches").orderByChild("dateAdded").limitToLast(5).on("child_added", function (childSnapshot) {
-    var newDiv = $("<div>");
-    newDiv.text(childSnapshot.val().lyricSearch);
-    $("#recentSearchesDiv").append(newDiv);
+    var listItem = $("<li>");
+    listItem.addClass("collection-item");
+    listItem.text(childSnapshot.val().lyricSearch);
+    $("#recentSearchesDiv").append(listItem);
 
 }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
