@@ -18,6 +18,10 @@ var glblVars = {
     database: firebase.database()
 }
 
+// Audio setup
+var goatScream = document.createElement("audio");
+goatScream.setAttribute("src", "assets/audio/scream.mp3")
+
 //musixMatch method to retrieve songs by lyrics
 var mm = {
     getTracks: function () {
@@ -139,6 +143,11 @@ $("form").on("submit", function (event) {
 
 //Listen for user to click on a you tube button in the search results
 $(document).on("click", ".youTubeBtn", yt.getVideo);
+
+// User clicked image
+$(document).on("click", "img", function() {
+    goatScream.play();
+})
 
 // Listen for chats and add to the page 
 glblVars.database.ref("/searches").orderByChild("dateAdded").limitToLast(5).on("child_added", function (childSnapshot) {
